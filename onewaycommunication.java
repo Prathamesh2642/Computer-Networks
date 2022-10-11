@@ -7,6 +7,7 @@ public class ABC {
         try {
             ServerSocket ss = new ServerSocket(6666);
             Socket s=ss.accept();
+            System.out.println("Server Started");
             DataInputStream di=new DataInputStream(s.getInputStream());
             String str=di.readUTF();
             System.out.println("Message from client "+str);
@@ -17,6 +18,7 @@ public class ABC {
         }
     }
 }
+
 
 // Client side
 import java.io.*;
