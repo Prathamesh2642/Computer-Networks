@@ -1,3 +1,4 @@
+//FILE TRANSFER SERVER SIDE
 import java.io.*;
 import java.net.*;
 public class filetransfer {
@@ -30,3 +31,26 @@ public class filetransfer {
 
     }
 }
+
+//FILE TRANSFER CLIENT SIDE
+import java.io.*;
+import java.net.*;
+public class filetransferclient {
+public static void main(String [] args) throws Exception{
+    Socket s=new Socket("localhost",6666);
+    byte[] contents = new byte[10000];
+    //Initialize the FileOutputStream to the output file's full path.
+    FileOutputStream fos = new FileOutputStream("C:\\Users\\Prathamesh Patil\\IdeaProjects\\Firstjavaproject\\src\\chimes-7037.mp3");
+    BufferedOutputStream bos = new BufferedOutputStream(fos);
+    InputStream is = s.getInputStream();
+    //No of bytes read in one read() call
+    int bytesRead = 0;
+    while((bytesRead=is.read(contents))!=-1)
+        bos.write(contents, 0, bytesRead);
+    bos.flush();
+    s.close();
+    System.out.println("File saved successfully!");
+}
+}
+
+
